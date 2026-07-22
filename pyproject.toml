@@ -2,4 +2,35 @@
 name = "nordschleifen-coach"
 version = "0.1.0"
 description = "AI-assisted racing coach for Assetto Corsa Competizione."
+readme = "README.md"
 requires-python = ">=3.14"
+license = "Apache-2.0"
+authors = [
+    { name = "Axel Spaeth" }
+]
+
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4,<9",
+    "ruff>=0.12,<0.13",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+    "B",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
