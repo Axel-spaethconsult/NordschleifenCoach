@@ -1,0 +1,5 @@
+[project]
+name = "nordschleifen-coach"
+version = "0.1.0"
+description = "AI-assisted racing coach for Assetto Corsa Competizione."
+requires-python = ">=3.14"
