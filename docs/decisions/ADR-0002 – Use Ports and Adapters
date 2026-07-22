@@ -1,0 +1,126 @@
+# ADR-0002 – Use Ports and Adapters
+
+**Status:** Accepted
+
+**Date:** 2026-07-22
+
+---
+
+# Context
+
+Nordschleifen Coach integrates with several external systems:
+
+* Assetto Corsa Competizione
+* Local file system
+* SQLite database
+* AI providers
+* Future dashboards and APIs
+
+These technologies may change over time. The core business logic should remain independent of any specific implementation.
+
+Without a clear boundary between the application and external systems, changes in infrastructure would directly affect business logic.
+
+---
+
+# Decision
+
+The project adopts the **Ports and Adapters (Hexagonal Architecture)** pattern to isolate business logic from external technologies.
+
+Communication between the application and the outside world will occur only through well-defined interfaces (ports). Concrete implementations (adapters) will provide the technical behavior.
+
+---
+
+# Architecture
+
+The application defines the required interfaces.
+
+Examples of outbound ports:
+
+* TelemetryRepository
+* SessionRepository
+* AICoach
+* FeatureStore
+* TrainingPlanRepository
+
+Examples of inbound ports:
+
+* ImportTelemetry
+* AnalyzeSession
+* CompareSessions
+* GenerateTrainingPlan
+
+Adapters implement these interfaces for specific technologies.
+
+Examples:
+
+* ACCTelemetryCollector
+* SQLiteSessionRepository
+* OpenAICoach
+* FileSystemTelemetryRepository
+
+---
+
+# Dependency Rule
+
+Interfaces are defined by the application layer.
+
+Infrastructure implements these interfaces.
+
+Business logic never depends on concrete implementations.
+
+```text
+Application
+     │
+     ▼
+ Port (Interface)
+     ▲
+     │
+Infrastructure Adapter
+```
+
+---
+
+# Consequences
+
+## Advantages
+
+* External systems can be replaced without changing business logic.
+* Infrastructure components are independently testable.
+* Mock implementations simplify unit testing.
+* New simulators and AI providers can be integrated with minimal changes.
+
+## Trade-offs
+
+* Additional interfaces increase the number of files.
+* Slightly more boilerplate code.
+* Requires discipline when introducing new dependencies.
+
+These trade-offs are acceptable because modularity and long-term maintainability are primary project goals.
+
+---
+
+# Alternatives Considered
+
+## Direct infrastructure access
+
+Rejected because it tightly couples business logic to implementation details.
+
+## Service locator pattern
+
+Rejected because dependencies become implicit and harder to test.
+
+## Global utility classes
+
+Rejected because they reduce modularity and make future extensions more difficult.
+
+---
+
+# Decision Outcome
+
+All communication between the application and external technologies shall occur through ports and adapters.
+
+The application layer defines interfaces.
+
+Infrastructure provides implementations.
+
+The domain and application layers remain independent of external technologies.
