@@ -8,4 +8,3 @@ class Session:
     """Represents a driving session."""
 
     laps: tuple[Lap, ...]
-    

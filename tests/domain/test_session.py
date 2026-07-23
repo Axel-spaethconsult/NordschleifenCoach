@@ -1,6 +1,6 @@
-from domain.entities.lap import Lap
-from domain.entities.session import Session
-from domain.value_objects.lap_time import LapTime
+from nordschleifen_coach.domain.entities.lap import Lap
+from nordschleifen_coach.domain.entities.session import Session
+from nordschleifen_coach.domain.value_objects.lap_time import LapTime
 
 
 def test_create_session() -> None:

@@ -1,6 +1,6 @@
 import pytest
 
-from domain.value_objects.distance import Distance
+from nordschleifen_coach.domain.value_objects.distance import Distance
 
 
 def test_create_valid_distance() -> None:

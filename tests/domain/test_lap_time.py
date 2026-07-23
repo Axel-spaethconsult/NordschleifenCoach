@@ -1,6 +1,6 @@
 import pytest
 
-from domain.value_objects.lap_time import LapTime
+from nordschleifen_coach.domain.value_objects.lap_time import LapTime
 
 
 def test_create_valid_lap_time() -> None:

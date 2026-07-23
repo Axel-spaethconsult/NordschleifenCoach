@@ -1,7 +1,8 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class TrackConfiguration(str, Enum):
+class TrackConfiguration(StrEnum):
+
     """Represents a track configuration."""
 
     GP = "GP"

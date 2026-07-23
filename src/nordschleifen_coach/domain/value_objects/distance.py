@@ -10,4 +10,3 @@ class Distance:
     def __post_init__(self) -> None:
         if self.meters < 0:
             raise ValueError("Distance cannot be negative.")
-        
