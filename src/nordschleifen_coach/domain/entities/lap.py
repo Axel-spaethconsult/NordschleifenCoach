@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from domain.value_objects.lap_time import LapTime
+from src.nordschleifen_coach.domain.value_objects.lap_time import LapTime
 
 
 @dataclass(frozen=True, slots=True)

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from domain.entities.lap import Lap
+from src.nordschleifen_coach.domain.entities.lap import Lap
 
 
 @dataclass(frozen=True, slots=True)

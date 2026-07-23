@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from domain.value_objects.distance import Distance
-from domain.value_objects.track_configuration import TrackConfiguration
+from src.nordschleifen_coach.domain.value_objects.distance import Distance
+from src.nordschleifen_coach.domain.value_objects.track_configuration import TrackConfiguration
 
 
 @dataclass(frozen=True, slots=True)
