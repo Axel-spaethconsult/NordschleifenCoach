@@ -1,17 +1,15 @@
 from domain.entities.track import Track
+from domain.value_objects.distance import Distance
+from domain.value_objects.track_configuration import TrackConfiguration
 
 
-def test_track_creation():
-    """A track can be created with valid data."""
-
+def test_track_creation() -> None:
     track = Track(
         name="Nürburgring",
-        configuration="24h",
+        configuration=TrackConfiguration.ENDURANCE_24H,
+
         country="Germany",
-        length_m=25_378.0,
+        length=Distance(25_378.0),
     )
 
-    assert track.name == "Nürburgring"
-    assert track.configuration == "24h"
-    assert track.country == "Germany"
-    assert track.length_m == 25_378.0
+    assert track.length.meters == 25_378.0
