@@ -24,13 +24,15 @@ class DrivingStateDetector:
         if frame is None:
             return DrivingState.UNKNOWN
 
-        if frame.vehicle_state.speed <= self.IDLE_SPEED_THRESHOLD:
-            return DrivingState.IDLE
-
+        # Driver inputs have priority
         if frame.driver_inputs.brake > self.BRAKE_THRESHOLD:
             return DrivingState.BRAKING
 
         if frame.driver_inputs.throttle > self.THROTTLE_THRESHOLD:
             return DrivingState.ACCELERATING
+
+        # Vehicle state
+        if frame.vehicle_state.speed <= self.IDLE_SPEED_THRESHOLD:
+            return DrivingState.IDLE
 
         return DrivingState.COASTING
