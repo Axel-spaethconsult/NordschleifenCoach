@@ -9,7 +9,7 @@ authors = [
     { name = "Axel Spaeth" }
 ]
 
-dependencies = ["pyaccsharedmemory>=..."]
+dependencies = ["pyaccsharedmemory"]
 
 [dependency-groups]
 dev = [
